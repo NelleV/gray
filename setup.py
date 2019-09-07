@@ -27,9 +27,9 @@ setup(
     author_email="lukasz@langa.pl",
     url="https://github.com/psf/gray",
     license="MIT",
-    py_modules=["gray", "grayd", "_version"],
-    packages=["blib2to3", "blib2to3.pgen2"],
-    package_data={"blib2to3": ["*.txt"]},
+    py_modules=["gray", "gray.grayd", "_version", "gray.externals.blib2to3"],
+    packages=["gray.externals.blib2to3.pgen2"],
+    package_data={"gray": ["*.txt"]},
     python_requires=">=3.6",
     zip_safe=False,
     install_requires=[
@@ -40,7 +40,7 @@ setup(
         "typed-ast>=1.3.1",
     ],
     extras_require={"d": ["aiohttp>=3.3.2", "aiohttp-cors"]},
-    test_suite="tests.test_gray",
+    test_suite="gray.tests.test_gray",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
@@ -55,9 +55,6 @@ setup(
         "Topic :: Software Development :: Quality Assurance",
     ],
     entry_points={
-        "console_scripts": [
-            "gray=gray:patched_main",
-            "grayd=grayd:patched_main [d]",
-        ]
+        "console_scripts": ["gray=gray:patched_main", "grayd=grayd:patched_main [d]"]
     },
 )

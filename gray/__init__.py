@@ -45,11 +45,11 @@ import toml
 from typed_ast import ast3, ast27
 
 # lib2to3 fork
-from blib2to3.pytree import Node, Leaf, type_repr
-from blib2to3 import pygram, pytree
-from blib2to3.pgen2 import driver, token
-from blib2to3.pgen2.grammar import Grammar
-from blib2to3.pgen2.parse import ParseError
+from gray.externals.blib2to3.pytree import Node, Leaf, type_repr
+from gray.externals.blib2to3 import pygram, pytree
+from gray.externals.blib2to3.pgen2 import driver, token
+from gray.externals.blib2to3.pgen2.grammar import Grammar
+from gray.externals.blib2to3.pgen2.parse import ParseError
 
 from _version import get_versions
 
