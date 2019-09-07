@@ -178,7 +178,6 @@ class grayTestCase(unittest.TestCase):
         self.assertFormatEqual(expected, actual)
 
     @patch("gray.dump_to_file", dump_to_stderr)
-    @unittest.expectedFailure
     def test_self(self) -> None:
         source, expected = read_data("test_gray", data=False)
         actual = fs(source)
@@ -955,9 +954,7 @@ class grayTestCase(unittest.TestCase):
         node = gray.lib2to3_parse("def f(*, arg,): ...\n")
         self.assertEqual(gray.get_features_used(node), {Feature.TRAILING_COMMA_IN_DEF})
         node = gray.lib2to3_parse("f(*arg,)\n")
-        self.assertEqual(
-            gray.get_features_used(node), {Feature.TRAILING_COMMA_IN_CALL}
-        )
+        self.assertEqual(gray.get_features_used(node), {Feature.TRAILING_COMMA_IN_CALL})
         node = gray.lib2to3_parse("def f(*, arg): f'string'\n")
         self.assertEqual(gray.get_features_used(node), {Feature.F_STRINGS})
         node = gray.lib2to3_parse("123_456\n")
