@@ -1,6 +1,6 @@
 class C:
     def test(self) -> None:
-        with patch("black.out", print):
+        with patch("gray.out", print):
             self.assertEqual(
                 unstyle(str(report)), "1 file reformatted, 1 file failed to reformat."
             )

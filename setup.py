@@ -3,7 +3,7 @@ from setuptools import setup
 import sys
 import versioneer
 
-assert sys.version_info >= (3, 6, 0), "black requires Python 3.6+"
+assert sys.version_info >= (3, 6, 0), "gray requires Python 3.6+"
 from pathlib import Path  # noqa E402
 
 CURRENT_DIR = Path(__file__).parent
@@ -16,7 +16,7 @@ def get_long_description() -> str:
 
 
 setup(
-    name="black",
+    name="gray",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     description="The uncompromising code formatter.",
@@ -25,9 +25,9 @@ setup(
     keywords="automation formatter yapf autopep8 pyfmt gofmt rustfmt",
     author="Łukasz Langa",
     author_email="lukasz@langa.pl",
-    url="https://github.com/psf/black",
+    url="https://github.com/psf/gray",
     license="MIT",
-    py_modules=["black", "blackd", "_version"],
+    py_modules=["gray", "grayd", "_version"],
     packages=["blib2to3", "blib2to3.pgen2"],
     package_data={"blib2to3": ["*.txt"]},
     python_requires=">=3.6",
@@ -40,7 +40,7 @@ setup(
         "typed-ast>=1.3.1",
     ],
     extras_require={"d": ["aiohttp>=3.3.2", "aiohttp-cors"]},
-    test_suite="tests.test_black",
+    test_suite="tests.test_gray",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
@@ -56,8 +56,8 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "black=black:patched_main",
-            "blackd=blackd:patched_main [d]",
+            "gray=gray:patched_main",
+            "grayd=grayd:patched_main [d]",
         ]
     },
 )

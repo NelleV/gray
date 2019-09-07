@@ -88,9 +88,9 @@ def generate_sections_from_readme():
 
 # -- Project information -----------------------------------------------------
 
-project = "Black"
-copyright = "2018, Łukasz Langa and contributors to Black"
-author = "Łukasz Langa and contributors to Black"
+project = "gray"
+copyright = "2018, Łukasz Langa and contributors to gray"
+author = "Łukasz Langa and contributors to gray"
 
 # Autopopulate version
 # The full version, including alpha/beta/rc tags.
@@ -164,7 +164,7 @@ html_theme_options = {
     "description": "“Any color you like.”",
     "github_button": True,
     "github_user": "psf",
-    "github_repo": "black",
+    "github_repo": "gray",
     "github_type": "star",
     "show_powered_by": True,
     "fixed_sidebar": True,
@@ -192,7 +192,7 @@ html_static_path = ["_static"]
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "blackdoc"
+htmlhelp_basename = "graydoc"
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -218,9 +218,9 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "black.tex",
-        "Documentation for Black",
-        "Łukasz Langa and contributors to Black",
+        "gray.tex",
+        "Documentation for gray",
+        "Łukasz Langa and contributors to gray",
         "manual",
     )
 ]
@@ -230,7 +230,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "black", "Documentation for Black", [author], 1)]
+man_pages = [(master_doc, "gray", "Documentation for gray", [author], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------------
@@ -241,10 +241,10 @@ man_pages = [(master_doc, "black", "Documentation for Black", [author], 1)]
 texinfo_documents = [
     (
         master_doc,
-        "Black",
-        "Documentation for Black",
+        "gray",
+        "Documentation for gray",
         author,
-        "Black",
+        "gray",
         "The uncompromising Python code formatter",
         "Miscellaneous",
     )

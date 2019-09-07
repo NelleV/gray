@@ -1,178 +1,178 @@
-*Black* functions
+*gray* functions
 =================
 
 *Contents are subject to change.*
 
-.. currentmodule:: black
+.. currentmodule:: gray
 
 Assertions and checks
 ---------------------
 
-.. autofunction:: black.assert_equivalent
+.. autofunction:: gray.assert_equivalent
 
-.. autofunction:: black.assert_stable
+.. autofunction:: gray.assert_stable
 
-.. autofunction:: black.can_be_split
+.. autofunction:: gray.can_be_split
 
-.. autofunction:: black.can_omit_invisible_parens
+.. autofunction:: gray.can_omit_invisible_parens
 
-.. autofunction:: black.is_empty_tuple
+.. autofunction:: gray.is_empty_tuple
 
-.. autofunction:: black.is_import
+.. autofunction:: gray.is_import
 
-.. autofunction:: black.is_line_short_enough
+.. autofunction:: gray.is_line_short_enough
 
-.. autofunction:: black.is_multiline_string
+.. autofunction:: gray.is_multiline_string
 
-.. autofunction:: black.is_one_tuple
+.. autofunction:: gray.is_one_tuple
 
-.. autofunction:: black.is_python36
+.. autofunction:: gray.is_python36
 
-.. autofunction:: black.is_split_after_delimiter
+.. autofunction:: gray.is_split_after_delimiter
 
-.. autofunction:: black.is_split_before_delimiter
+.. autofunction:: gray.is_split_before_delimiter
 
-.. autofunction:: black.is_stub_body
+.. autofunction:: gray.is_stub_body
 
-.. autofunction:: black.is_stub_suite
+.. autofunction:: gray.is_stub_suite
 
-.. autofunction:: black.is_vararg
+.. autofunction:: gray.is_vararg
 
-.. autofunction:: black.is_yield
+.. autofunction:: gray.is_yield
 
 
 Formatting
 ----------
 
-.. autofunction:: black.format_file_contents
+.. autofunction:: gray.format_file_contents
 
-.. autofunction:: black.format_file_in_place
+.. autofunction:: gray.format_file_in_place
 
-.. autofunction:: black.format_stdin_to_stdout
+.. autofunction:: gray.format_stdin_to_stdout
 
-.. autofunction:: black.format_str
+.. autofunction:: gray.format_str
 
-.. autofunction:: black.reformat_one
+.. autofunction:: gray.reformat_one
 
-.. autofunction:: black.schedule_formatting
+.. autofunction:: gray.schedule_formatting
 
 File operations
 ---------------
 
-.. autofunction:: black.dump_to_file
+.. autofunction:: gray.dump_to_file
 
-.. autofunction:: black.find_project_root
+.. autofunction:: gray.find_project_root
 
-.. autofunction:: black.gen_python_files_in_dir
+.. autofunction:: gray.gen_python_files_in_dir
 
-.. autofunction:: black.read_pyproject_toml
+.. autofunction:: gray.read_pyproject_toml
 
 Parsing
 -------
 
-.. autofunction:: black.decode_bytes
+.. autofunction:: gray.decode_bytes
 
-.. autofunction:: black.lib2to3_parse
+.. autofunction:: gray.lib2to3_parse
 
-.. autofunction:: black.lib2to3_unparse
+.. autofunction:: gray.lib2to3_unparse
 
 Split functions
 ---------------
 
-.. autofunction:: black.bracket_split_build_line
+.. autofunction:: gray.bracket_split_build_line
 
-.. autofunction:: black.bracket_split_succeeded_or_raise
+.. autofunction:: gray.bracket_split_succeeded_or_raise
 
-.. autofunction:: black.delimiter_split
+.. autofunction:: gray.delimiter_split
 
-.. autofunction:: black.left_hand_split
+.. autofunction:: gray.left_hand_split
 
-.. autofunction:: black.right_hand_split
+.. autofunction:: gray.right_hand_split
 
-.. autofunction:: black.standalone_comment_split
+.. autofunction:: gray.standalone_comment_split
 
-.. autofunction:: black.split_line
+.. autofunction:: gray.split_line
 
 Caching
 -------
 
-.. autofunction:: black.filter_cached
+.. autofunction:: gray.filter_cached
 
-.. autofunction:: black.get_cache_file
+.. autofunction:: gray.get_cache_file
 
-.. autofunction:: black.get_cache_info
+.. autofunction:: gray.get_cache_info
 
-.. autofunction:: black.read_cache
+.. autofunction:: gray.read_cache
 
-.. autofunction:: black.write_cache
+.. autofunction:: gray.write_cache
 
 Utilities
 ---------
 
-.. py:function:: black.DebugVisitor.show(code: str) -> None
+.. py:function:: gray.DebugVisitor.show(code: str) -> None
 
     Pretty-print the lib2to3 AST of a given string of `code`.
 
-.. autofunction:: black.cancel
+.. autofunction:: gray.cancel
 
-.. autofunction:: black.child_towards
+.. autofunction:: gray.child_towards
 
-.. autofunction:: black.container_of
+.. autofunction:: gray.container_of
 
-.. autofunction:: black.convert_one_fmt_off_pair
+.. autofunction:: gray.convert_one_fmt_off_pair
 
-.. autofunction:: black.diff
+.. autofunction:: gray.diff
 
-.. autofunction:: black.dont_increase_indentation
+.. autofunction:: gray.dont_increase_indentation
 
-.. autofunction:: black.format_float_or_int_string
+.. autofunction:: gray.format_float_or_int_string
 
-.. autofunction:: black.format_int_string
+.. autofunction:: gray.format_int_string
 
-.. autofunction:: black.ensure_visible
+.. autofunction:: gray.ensure_visible
 
-.. autofunction:: black.enumerate_reversed
+.. autofunction:: gray.enumerate_reversed
 
-.. autofunction:: black.enumerate_with_length
+.. autofunction:: gray.enumerate_with_length
 
-.. autofunction:: black.generate_comments
+.. autofunction:: gray.generate_comments
 
-.. autofunction:: black.generate_ignored_nodes
+.. autofunction:: gray.generate_ignored_nodes
 
-.. autofunction:: black.generate_trailers_to_omit
+.. autofunction:: gray.generate_trailers_to_omit
 
-.. autofunction:: black.get_future_imports
+.. autofunction:: gray.get_future_imports
 
-.. autofunction:: black.list_comments
+.. autofunction:: gray.list_comments
 
-.. autofunction:: black.make_comment
+.. autofunction:: gray.make_comment
 
-.. autofunction:: black.maybe_make_parens_invisible_in_atom
+.. autofunction:: gray.maybe_make_parens_invisible_in_atom
 
-.. autofunction:: black.max_delimiter_priority_in_atom
+.. autofunction:: gray.max_delimiter_priority_in_atom
 
-.. autofunction:: black.normalize_fmt_off
+.. autofunction:: gray.normalize_fmt_off
 
-.. autofunction:: black.normalize_numeric_literal
+.. autofunction:: gray.normalize_numeric_literal
 
-.. autofunction:: black.normalize_prefix
+.. autofunction:: gray.normalize_prefix
 
-.. autofunction:: black.normalize_string_prefix
+.. autofunction:: gray.normalize_string_prefix
 
-.. autofunction:: black.normalize_string_quotes
+.. autofunction:: gray.normalize_string_quotes
 
-.. autofunction:: black.normalize_invisible_parens
+.. autofunction:: gray.normalize_invisible_parens
 
-.. autofunction:: black.patch_click
+.. autofunction:: gray.patch_click
 
-.. autofunction:: black.preceding_leaf
+.. autofunction:: gray.preceding_leaf
 
-.. autofunction:: black.re_compile_maybe_verbose
+.. autofunction:: gray.re_compile_maybe_verbose
 
-.. autofunction:: black.should_explode
+.. autofunction:: gray.should_explode
 
-.. autofunction:: black.shutdown
+.. autofunction:: gray.shutdown
 
-.. autofunction:: black.sub_twice
+.. autofunction:: gray.sub_twice
 
-.. autofunction:: black.whitespace
+.. autofunction:: gray.whitespace

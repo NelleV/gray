@@ -5,7 +5,7 @@ _build
 docs/_static/pypi.svg
 .tox
 __pycache__
-black.egg-info
+gray.egg-info
 build/
 dist/
 pip-wheel-metadata/

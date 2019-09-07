@@ -1,12 +1,12 @@
-*Black* exceptions
+*gray* exceptions
 ==================
 
 *Contents are subject to change.*
 
-.. currentmodule:: black
+.. currentmodule:: gray
 
-.. autoexception:: black.CannotSplit
+.. autoexception:: gray.CannotSplit
 
-.. autoexception:: black.NothingChanged
+.. autoexception:: gray.NothingChanged
 
-.. autoexception:: black.InvalidInput
+.. autoexception:: gray.InvalidInput

@@ -62,7 +62,7 @@ DEFAULT_EXCLUDES = (
     r"/(\.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist)/"
 )
 DEFAULT_INCLUDES = r"\.pyi?$"
-CACHE_DIR = Path(user_cache_dir("black", version=__git_version__))
+CACHE_DIR = Path(user_cache_dir("gray", version=__git_version__))
 
 
 # types
@@ -219,7 +219,7 @@ def supports_feature(target_versions: Set[TargetVersion], feature: Feature) -> b
 def read_pyproject_toml(
     ctx: click.Context, param: click.Parameter, value: Union[str, int, bool, None]
 ) -> Optional[str]:
-    """Inject Black configuration from "pyproject.toml" into defaults in `ctx`.
+    """Inject gray configuration from "pyproject.toml" into defaults in `ctx`.
 
     Returns the path to a successfully found and read configuration file, None
     otherwise.
@@ -235,7 +235,7 @@ def read_pyproject_toml(
 
     try:
         pyproject_toml = toml.load(value)
-        config = pyproject_toml.get("tool", {}).get("black", {})
+        config = pyproject_toml.get("tool", {}).get("gray", {})
     except (toml.TomlDecodeError, OSError) as e:
         raise click.FileError(
             filename=value, hint=f"Error reading configuration file: {e}"
@@ -269,7 +269,7 @@ def read_pyproject_toml(
     callback=lambda c, p, v: [TargetVersion[val.upper()] for val in v],
     multiple=True,
     help=(
-        "Python versions that should be supported by Black's output. [default: "
+        "Python versions that should be supported by gray's output. [default: "
         "per-file auto-detection]"
     ),
 )
@@ -1047,7 +1047,7 @@ class BracketTracker:
         field that it forms a pair with. This is a one-directional link to
         avoid reference cycles.
 
-        If a leaf is a delimiter (a token on which Black can split the line if
+        If a leaf is a delimiter (a token on which gray can split the line if
         needed) and it's on depth 0, its `id()` is stored in the tracker's
         `delimiters` field.
         """
@@ -1304,7 +1304,7 @@ class Line:
             if last_leaf.type == token.COMMA or (
                 last_leaf.type == token.RPAR and not last_leaf.value
             ):
-                # When trailing commas or optional parens are inserted by Black for
+                # When trailing commas or optional parens are inserted by gray for
                 # consistency, comments after the previous last element are not moved
                 # (they don't have to, rendering will still be correct).  So we ignore
                 # trailing commas and invisible.
@@ -1496,7 +1496,7 @@ class EmptyLineTracker:
         """
         before, after = self._maybe_empty_lines(current_line)
         before = (
-            # Black should not insert empty lines at the beginning
+            # gray should not insert empty lines at the beginning
             # of the file
             0
             if self.previous_line is None
@@ -3656,8 +3656,8 @@ def assert_equivalent(src: str, dst: str) -> None:
     except Exception as exc:
         log = dump_to_file("".join(traceback.format_tb(exc.__traceback__)), dst)
         raise AssertionError(
-            f"INTERNAL ERROR: Black produced invalid code: {exc}. "
-            f"Please report a bug on https://github.com/psf/black/issues.  "
+            f"INTERNAL ERROR: gray produced invalid code: {exc}. "
+            f"Please report a bug on… Well. Don't report a bug just yet.  "
             f"This invalid output might be helpful: {log}"
         ) from None
 
@@ -3666,9 +3666,9 @@ def assert_equivalent(src: str, dst: str) -> None:
     if src_ast_str != dst_ast_str:
         log = dump_to_file(diff(src_ast_str, dst_ast_str, "src", "dst"))
         raise AssertionError(
-            f"INTERNAL ERROR: Black produced code that is not equivalent to "
+            f"INTERNAL ERROR: gray produced code that is not equivalent to "
             f"the source.  "
-            f"Please report a bug on https://github.com/psf/black/issues.  "
+            f"Please report a bug on… Well. Don't report a bug just yet. "
             f"This diff might be helpful: {log}"
         ) from None
 
@@ -3682,9 +3682,9 @@ def assert_stable(src: str, dst: str, mode: FileMode) -> None:
             diff(dst, newdst, "first pass", "second pass"),
         )
         raise AssertionError(
-            f"INTERNAL ERROR: Black produced different code on the second pass "
+            f"INTERNAL ERROR: gray produced different code on the second pass "
             f"of the formatter.  "
-            f"Please report a bug on https://github.com/psf/black/issues.  "
+            f"Please report a bug on… Don't report a bug just yet."
             f"This diff might be helpful: {log}"
         ) from None
 
@@ -4004,7 +4004,7 @@ def patch_click() -> None:
     default which restricts paths that it can access during the lifetime of the
     application.  Click refuses to work in this scenario by raising a RuntimeError.
 
-    In case of Black the likelihood that non-ASCII characters are going to be used in
+    In case of gray the likelihood that non-ASCII characters are going to be used in
     file paths is minimal since it's Python source code.  Moreover, this crash was
     spurious on Python 3.7 thanks to PEP 538 and PEP 540.
     """

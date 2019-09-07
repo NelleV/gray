@@ -1,53 +1,53 @@
-*Black* classes
+*gray* classes
 ===============
 
 *Contents are subject to change.*
 
-.. currentmodule:: black
+.. currentmodule:: gray
 
 :class:`BracketTracker`
 -----------------------
 
-.. autoclass:: black.BracketTracker
+.. autoclass:: gray.BracketTracker
     :members:
 
 :class:`EmptyLineTracker`
 -------------------------
 
-.. autoclass:: black.EmptyLineTracker
+.. autoclass:: gray.EmptyLineTracker
     :members:
 
 :class:`Line`
 -------------
 
-.. autoclass:: black.Line
+.. autoclass:: gray.Line
     :members:
     :special-members: __str__, __bool__
 
 :class:`LineGenerator`
 ----------------------
 
-.. autoclass:: black.LineGenerator
+.. autoclass:: gray.LineGenerator
     :show-inheritance:
     :members:
 
 :class:`ProtoComment`
 ---------------------
 
-.. autoclass:: black.ProtoComment
+.. autoclass:: gray.ProtoComment
     :members:
 
 :class:`Report`
 ---------------
 
-.. autoclass:: black.Report
+.. autoclass:: gray.Report
     :members:
     :special-members: __str__
 
 :class:`Visitor`
 ----------------
 
-.. autoclass:: black.Visitor
+.. autoclass:: gray.Visitor
     :show-inheritance:
     :members:
 
@@ -57,20 +57,20 @@ Enums
 :class:`Changed`
 ----------------
 
-.. autoclass:: black.Changed
+.. autoclass:: gray.Changed
     :show-inheritance:
     :members:
 
 :class:`FileMode`
 -----------------
 
-.. autoclass:: black.FileMode
+.. autoclass:: gray.FileMode
     :show-inheritance:
     :members:
 
 :class:`WriteBack`
 ------------------
 
-.. autoclass:: black.WriteBack
+.. autoclass:: gray.WriteBack
     :show-inheritance:
     :members:

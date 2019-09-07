@@ -7,7 +7,7 @@ from typing import Set, Tuple
 
 from aiohttp import web
 import aiohttp_cors
-import black
+import gray
 import click
 
 # This is used internally by tests to shut down the server prematurely
@@ -19,7 +19,7 @@ PYTHON_VARIANT_HEADER = "X-Python-Variant"
 SKIP_STRING_NORMALIZATION_HEADER = "X-Skip-String-Normalization"
 FAST_OR_SAFE_HEADER = "X-Fast-Or-Safe"
 
-BLACK_HEADERS = [
+gray_HEADERS = [
     VERSION_HEADER,
     LINE_LENGTH_HEADER,
     PYTHON_VARIANT_HEADER,
@@ -37,12 +37,12 @@ class InvalidVariantHeader(Exception):
     "--bind-host", type=str, help="Address to bind the server to.", default="localhost"
 )
 @click.option("--bind-port", type=int, help="Port to listen on", default=45484)
-@click.version_option(version=black.__version__)
+@click.version_option(version=gray.__version__)
 def main(bind_host: str, bind_port: int) -> None:
     logging.basicConfig(level=logging.INFO)
     app = make_app()
-    ver = black.__version__
-    black.out(f"blackd version {ver} listening on {bind_host} port {bind_port}")
+    ver = gray.__version__
+    gray.out(f"grayd version {ver} listening on {bind_host} port {bind_port}")
     web.run_app(app, host=bind_host, port=bind_port, handle_signals=True, print=None)
 
 
@@ -56,7 +56,7 @@ def make_app() -> web.Application:
         resource.add_route("POST", partial(handle, executor=executor)),
         {
             "*": aiohttp_cors.ResourceOptions(
-                allow_headers=(*BLACK_HEADERS, "Content-Type"), expose_headers="*"
+                allow_headers=(*gray_HEADERS, "Content-Type"), expose_headers="*"
             )
         },
     )
@@ -72,7 +72,7 @@ async def handle(request: web.Request, executor: Executor) -> web.Response:
             )
         try:
             line_length = int(
-                request.headers.get(LINE_LENGTH_HEADER, black.DEFAULT_LINE_LENGTH)
+                request.headers.get(LINE_LENGTH_HEADER, gray.DEFAULT_LINE_LENGTH)
             )
         except ValueError:
             return web.Response(status=400, text="Invalid line length header value")
@@ -96,7 +96,7 @@ async def handle(request: web.Request, executor: Executor) -> web.Response:
         fast = False
         if request.headers.get(FAST_OR_SAFE_HEADER, "safe") == "fast":
             fast = True
-        mode = black.FileMode(
+        mode = gray.FileMode(
             target_versions=versions,
             is_pyi=pyi,
             line_length=line_length,
@@ -107,21 +107,21 @@ async def handle(request: web.Request, executor: Executor) -> web.Response:
         req_str = req_bytes.decode(charset)
         loop = asyncio.get_event_loop()
         formatted_str = await loop.run_in_executor(
-            executor, partial(black.format_file_contents, req_str, fast=fast, mode=mode)
+            executor, partial(gray.format_file_contents, req_str, fast=fast, mode=mode)
         )
         return web.Response(
             content_type=request.content_type, charset=charset, text=formatted_str
         )
-    except black.NothingChanged:
+    except gray.NothingChanged:
         return web.Response(status=204)
-    except black.InvalidInput as e:
+    except gray.InvalidInput as e:
         return web.Response(status=400, text=str(e))
     except Exception as e:
         logging.exception("Exception during handling a request")
         return web.Response(status=500, text=str(e))
 
 
-def parse_python_variant_header(value: str) -> Tuple[bool, Set[black.TargetVersion]]:
+def parse_python_variant_header(value: str) -> Tuple[bool, Set[gray.TargetVersion]]:
     if value == "pyi":
         return True, set()
     else:
@@ -148,9 +148,9 @@ def parse_python_variant_header(value: str) -> Tuple[bool, Set[black.TargetVersi
                     # Default to lowest supported minor version.
                     minor = 7 if major == 2 else 3
                 version_str = f"PY{major}{minor}"
-                if major == 3 and not hasattr(black.TargetVersion, version_str):
+                if major == 3 and not hasattr(gray.TargetVersion, version_str):
                     raise InvalidVariantHeader(f"3.{minor} is not supported")
-                versions.add(black.TargetVersion[version_str])
+                versions.add(gray.TargetVersion[version_str])
             except (KeyError, ValueError):
                 raise InvalidVariantHeader("expected e.g. '3.7', 'py3.5'")
         return False, versions
@@ -158,7 +158,7 @@ def parse_python_variant_header(value: str) -> Tuple[bool, Set[black.TargetVersi
 
 def patched_main() -> None:
     freeze_support()
-    black.patch_click()
+    gray.patch_click()
     main()
 
 
